@@ -1,0 +1,34 @@
+<!--https://formden.com/blog/date-picker-->
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-iso.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"/>
+</head>
+
+<body>
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+
+<div class="bootstrap-iso">
+
+    <div id="container-fluid h-100 d-flex justify-content-center text-center">
+        <h1 class="text-success">Выберите действие</h1>
+    </div>
+
+    <div class="container h-100 d-flex justify-content-center text-center">
+        <form class="form-inline" method="get" action="/get_transactions">
+            <button type="submit" class="btn btn-success" id="get_transactions_btn">Совершить транзакцию</button> 
+        </form>
+        <form> 
+        <div class="invisible">...</div>
+        </form>
+        <form class="form-inline" method="get" action="/get_statement">
+            <button type="submit" class="btn btn-success" id="get_statement_btn">Получить выписку</button> 
+        </form>
+    </div>
+
+ </div>
+
+</body>

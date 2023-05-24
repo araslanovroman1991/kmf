@@ -1,0 +1,4 @@
+cd /home/araslanovroman1991/Scripts/KMF
+docker build --tag kmf_app/kmf_app:latest .
+docker run -d -p 5555:5555 --restart always -v /home/araslanovroman1991/Scripts/KMF/app/config:/opt/app/config --name kmf_app kmf_app/kmf_app:latest
+docker system prune -a #Осторожно - удаляет как неиспользуемые, так и оборванные изображения

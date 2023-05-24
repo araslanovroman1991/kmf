@@ -1,0 +1,89 @@
+<!--https://formden.com/blog/date-picker-->
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-iso.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-datepicker3.css') }}">
+</head>
+
+<body>
+
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/bootstrap-datepicker.min.js') }}"></script> 
+
+<div class="bootstrap-iso">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <form  id="send_transact" method="post" action="/get_statement">
+
+                    <div class="row">
+                        <div class="col-xs-6">
+
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker7">
+                                    <input type="date" class="form-control" name="d_from" id="d_from" method="GET" action="/get_statement"/>
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-xs-6">
+
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker8">
+                                    <input type="date" class="form-control" name="d_to" id="d_to" method="GET" action="/get_statement"/>
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="control-label" for="fio">ФИО</label>
+                        <select class="form-control" name= "fio" id="fio" method="GET" action="/get_statement">
+                            {% for x in fio %}
+                            <option value= "{{x}}" SELECTED>{{x}}</option>"
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">  
+                        <input type="submit" class="btn btn-success">
+                    <div>
+                    
+                    <div class="container">
+                        {% for msg in get_flashed_messages() %}
+                        <div class="flash">{{msg}}</div>
+                        {% endfor %}
+                    </div>
+
+                </form>  
+            </div>
+        </div>
+    </div> 
+</div> 
+<script type="text/javascript">
+    $(function () {
+        // инициализация datetimepicker7 и datetimepicker8
+        $("#datetimepicker7").datetimepicker();
+        $("#datetimepicker8").datetimepicker({
+            useCurrent: false
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker8').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker8").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
+
+</body>

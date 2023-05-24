@@ -1,0 +1,10 @@
+flask
+flask_wtf
+wtforms 
+flask_login
+configparser
+psycopg2
+requests
+pandas
+uuid
+xlsxwriter
